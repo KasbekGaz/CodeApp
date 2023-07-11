@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RadioPanas.io</title>
+  </head>
+  <body>
+    <h1>Generador de Contraseñas</h1>
+    <form method="post" action="{% url 'generadorContrasena' %}">
+      {% csrf_token %}
+      <label for="length">Tamaño:</label>
+      <input type="number" name="length" min="1" required /><br /><br />
+
+      <label
+        ><input type="checkbox" name="include_lowercase" />Incluir
+        minúsculas</label
+      ><br />
+      <label
+        ><input type="checkbox" name="include_uppercase" />Incluir
+        mayúsculas</label
+      ><br />
+      <label
+        ><input type="checkbox" name="include_numbers" />Incluir números</label
+      ><br />
+      <label
+        ><input type="checkbox" name="include_special_chars" />Incluir
+        caracteres especiales</label
+      ><br /><br />
+
+      <input type="submit" value="Generate Password" />
+    </form>
+    {% if password %}
+    <h2>Contraseña Generada:</h2>
+    <p>{{ password }}</p>
+    {% else %}
+    <p>No se genero ninguna contraseña</p>
+    {% endif %}
+  </body>
+</html>
